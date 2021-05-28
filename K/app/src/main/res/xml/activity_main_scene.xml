@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:motionInterpolator="lineara"
+        motion:duration="500">
+        <OnSwipe
+            motion:touchAnchorId="@+id/bottomView"
+            motion:touchAnchorSide="top"
+            motion:dragDirection="dragUp" />
+        <KeyFrameSet >
+            <KeyPosition
+                motion:motionTarget="@+id/firstBox"
+                motion:framePosition="50"
+                motion:keyPositionType="deltaRelative"
+                motion:percentWidth="1" />
+            <KeyPosition
+                motion:motionTarget="@+id/secondBox"
+                motion:framePosition="50"
+                motion:keyPositionType="deltaRelative"
+                motion:percentWidth="1" />
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+
+
+        <Constraint
+            android:id="@id/textContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:layout_constraintTop_toBottomOf="@id/backButton"
+            motion:layout_constraintBottom_toBottomOf="@id/topTextGuideLine"
+            motion:layout_constraintStart_toStartOf="@id/backButton"
+            motion:layout_constraintEnd_toEndOf="parent">
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/backButton"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            motion:layout_constraintBottom_toBottomOf="@id/topTextGuideLine"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            motion:layout_constraintVertical_bias="0.0" />
+
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/pullUpGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            motion:layout_constraintGuide_percent=".2"/>
+        <Constraint
+            android:id="@+id/topTextGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            motion:layout_constraintGuide_percent=".1"/>
+
+        <Constraint
+            android:id="@+id/topTextGuideLineVertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            motion:layout_constraintGuide_percent=".5"/>
+
+        <Constraint
+            android:id="@id/textContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            motion:layout_constraintBottom_toBottomOf="@id/topTextGuideLine"
+            motion:layout_constraintStart_toEndOf="@id/backButton"
+            motion:layout_constraintEnd_toEndOf="@id/topTextGuideLineVertical">
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/backButton"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            motion:layout_constraintBottom_toBottomOf="@id/topTextGuideLine"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            motion:layout_constraintVertical_bias="0.5"
+            android:layout_marginTop="1dp" />
+
+
+        <Constraint
+            android:id="@+id/firstBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constrainedWidth="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="12dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/secondBox"
+            motion:layout_constraintTop_toTopOf="@id/topTextGuideLine"
+            motion:layout_constraintBottom_toTopOf="@id/pullUpGuide" />
+
+        <Constraint
+            android:id="@+id/secondBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constrainedWidth="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="50dp"
+            motion:layout_constraintStart_toEndOf="@id/firstBox"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/pullUpGuide"
+            motion:layout_constraintTop_toBottomOf="@id/topTextGuideLine" />
+
+
+        <Constraint
+            android:id="@+id/thirdBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            motion:layout_constraintBottom_toTopOf="@id/pullUpGuide"
+            motion:layout_constraintTop_toBottomOf="@id/topTextGuideLine"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:alpha="0"/>
+
+    </ConstraintSet>
+
+
+</MotionScene>
